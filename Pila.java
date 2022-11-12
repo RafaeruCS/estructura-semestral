@@ -1,6 +1,6 @@
+
 public class Pila {
 
-  // Necesito un top
   int top = -1;
   int max;
   int[] pila;
@@ -12,38 +12,38 @@ public class Pila {
 
   void push(int dato) {
     try {
-      this.pila[this.top + 1] = dato;
-      this.top += 1;
+      if (top == max) {
+        System.out.println("Ya esta llena la pila");
+      } else {
+
+        this.pila[this.top + 1] = dato;
+        this.top += 1;
+      }
     } catch (Exception e) {
-      System.err.println("Ya esta llena la pila");
+
       System.err.println(e);
     }
   }
 
   void recorrido() {
+    System.out.println("Tope: " + this.top);
+    System.out.println("Maximo: " + this.max);
     for (int i = 0; i < pila[top]; i++) {
       System.out.println(pila[i]);
     }
+    System.out.println("Tope: " + this.top);
   }
 
-  // Modelo que devuelve el valor
-  int pop() {
+  void pop() {
     try {
-      this.top -= 1;
-      return pila[top];
+      if (top > -1) {
+        this.top -= 1;
+      } else {
+        System.out.println("La pila esta vacia");
+      }
     } catch (Exception e) {
-      System.err.println("La pila esta vacia");
+      System.err.println(e);
     }
-    return 0;
   }
-  // Por si acaso
-  /*
-   * void pop() {
-   * if (top > -1) {
-   * this.top -= 1;
-   * } else {
-   * System.out.println("La pila esta vacia");
-   * }
-   * }
-   */
+
 }
