@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Main {
@@ -9,7 +10,9 @@ public class Main {
         switch (opcion) {
           case 1:
             // Hoja de presentacion
-            Presentacion.HojaDePresentacion();
+            ImageIcon hojaDePresentacion = new ImageIcon("./hutao.jpg");
+            JOptionPane.showMessageDialog(null, null, "Hoja de presentacion", JOptionPane.INFORMATION_MESSAGE,
+                hojaDePresentacion);
             break;
           case 2:
             // Operaciones con Pila
