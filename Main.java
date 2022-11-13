@@ -56,8 +56,7 @@ public class Main {
         switch (opcionPila) {
           case 1:
             // Ingresar elementos de la Pila
-            int dato = Integer.parseInt(JOptionPane.showInputDialog(
-                "Ingrese un numero "));
+            String dato = JOptionPane.showInputDialog("Ingrese un numero ");
             pila.Push(dato);
             break;
           case 2:
@@ -100,8 +99,8 @@ public class Main {
         switch (opcionPila) {
           case 1:
             // Ingresar elementos de la Pila
-            int dato = Integer.parseInt(JOptionPane.showInputDialog(
-                "Ingrese un numero "));
+            String dato = JOptionPane.showInputDialog(
+                "Ingrese un numero ");
             colaSimple.Insertar(dato);
             break;
           case 2:

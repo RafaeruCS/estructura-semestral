@@ -1,28 +1,39 @@
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ColaSimple {
   int finalcs = -1;
   int iniciocs = -1;
   int max;
-  ArrayList<Integer> colaSimple = new ArrayList<Integer>();
+  String[] colaSimple;
+  String[] colaSimpleGuia;
 
   public ColaSimple(int max) {
     this.max = max;
+    this.colaSimple = new String[max];
+    this.colaSimpleGuia = new String[max];
+    for (int i = 0; i < colaSimple.length; i++) {
+      colaSimple[i] = " ";
+      colaSimpleGuia[i] = " ";
+    }
   }
 
-  void Insertar(int dato) {
+  void Insertar(String dato) {
     try {
-      finalcs += 1;
-      if (finalcs == 0) {
+
+      if (finalcs == -1) {
         iniciocs += 1;
-        colaSimple.add(dato);
-      } else if (finalcs == max) {
-        System.out.println("La cola esta llena");
-      } else if (finalcs > max) {
-        finalcs = max;
-      } else {
-        colaSimple.add(dato);
         finalcs += 1;
+        colaSimple[finalcs] = dato;
+        colaSimpleGuia[finalcs] = "frente/final";
+      } else if (finalcs == max - 1) {
+        System.out.println("La cola esta llena");
+        finalcs = max - 1;
+      } else {
+        finalcs += 1;
+        colaSimple[finalcs] = dato;
+        colaSimpleGuia[finalcs] = "final";
+        colaSimpleGuia[finalcs - 1] = " ";
+        colaSimpleGuia[iniciocs] = "frente";
       }
     } catch (Exception e) {
       System.err.println(e);
@@ -31,28 +42,31 @@ public class ColaSimple {
 
   void Eliminar() {
     try {
-      iniciocs += 1;
-      if (iniciocs == max) {
+      if (iniciocs == max - 1) {
         System.out.println("La cola esta vacia");
+
       } else if (iniciocs == -1) {
         System.out.println("La cola no tiene nada");
       } else {
-        colaSimple.remove(0);
+        colaSimpleGuia[iniciocs] = " ";
+        iniciocs += 1;
+        if (colaSimpleGuia[iniciocs].equals("final")) {
+          colaSimpleGuia[iniciocs] = "frente/final";
+        } else {
+          colaSimpleGuia[iniciocs] = "frente";
+        }
       }
+
     } catch (Exception e) {
       System.err.println(e);
     }
   }
 
   void Recorrido() {
-    if (iniciocs > -1 && finalcs <= max) {
-      System.out.println("Iniciocs: " + iniciocs);
-      System.out.println("Finalcs: " + finalcs);
-      System.out.println("Maximo: " + max);
-      for (int index = 0; index < colaSimple.size(); index++) {
-        System.out.println(colaSimple.get(index));
-      }
-    }
-
+    System.out.println("Frente: " + iniciocs);
+    System.out.println("Final: " + finalcs);
+    System.out.println("Maximo: " + max);
+    System.out.println(Arrays.toString(colaSimple));
+    System.out.println(Arrays.toString(colaSimpleGuia));
   }
 }
