@@ -1,23 +1,26 @@
+import java.util.ArrayList;
 
 public class Pila {
 
-  int top = -1;
   int max;
-  int[] pila;
+  int tope = -1;
+  ArrayList<Integer> pila = new ArrayList<Integer>();
 
   public Pila(int max) {
     this.max = max;
-    this.pila = new int[max];
   }
 
-  void push(int dato) {
+  void Push(int dato) {
     try {
-      if (top == max) {
+      tope += 1;
+      if (tope == max ) {
         System.out.println("Ya esta llena la pila");
+        tope = max;
+      } else if (tope > max ) {
+        System.out.println("Desbordamiento");
+        tope = max ;
       } else {
-
-        this.pila[this.top + 1] = dato;
-        this.top += 1;
+        pila.add(dato);
       }
     } catch (Exception e) {
 
@@ -25,21 +28,29 @@ public class Pila {
     }
   }
 
-  void recorrido() {
-    System.out.println("Tope: " + this.top);
-    System.out.println("Maximo: " + this.max);
-    for (int i = 0; i < pila[top]; i++) {
-      System.out.println(pila[i]);
+  void Recorrido() {
+    if (tope > -1) {
+      System.out.println("Tope: " + tope);
+      System.out.println("Cantidad de Items: " + pila.size() + "/" + max);
+      System.out.println("Maximo: " + max);
+      for (int i = 0; i < pila.size(); i++) {
+        System.out.println(pila.get(i));
+      }
+    } else {
+      System.out.println("La pila no tiene nada");
     }
-    System.out.println("Tope: " + this.top);
   }
 
-  void pop() {
+  void Pop() {
     try {
-      if (top > -1) {
-        this.top -= 1;
-      } else {
+      tope -= 1;
+      if (tope < -1) {
+        System.out.println("Subdesbordamiento");
+        tope = -1;
+      } else if (tope == -1) {
         System.out.println("La pila esta vacia");
+      } else {
+        pila.remove(pila.size() - 1);
       }
     } catch (Exception e) {
       System.err.println(e);

@@ -58,15 +58,15 @@ public class Main {
             // Ingresar elementos de la Pila
             int dato = Integer.parseInt(JOptionPane.showInputDialog(
                 "Ingrese un numero "));
-            pila.push(dato);
+            pila.Push(dato);
             break;
           case 2:
             // Eliminar elementos de la pila
-            pila.pop();
+            pila.Pop();
             break;
           case 3:
             // Mostrar la pila con el valor de tope
-            pila.recorrido();
+            pila.Recorrido();
             break;
           case 4:
             // Operaciones con Cola Circular
@@ -90,7 +90,47 @@ public class Main {
   }
 
   static void menuCola() {
-
+    int maximo = Integer
+        .parseInt(JOptionPane.showInputDialog("Ingrese el valor maximo de la cola"));
+    ColaSimple colaSimple = new ColaSimple(maximo);
+    while (true) {
+      try {
+        int opcionPila = Integer.parseInt(JOptionPane.showInputDialog(
+            "Menu\n1. Insertar elementos a la cola\n2. Eliminar elementos de la cola\n3. Mostrar la cola\n4. Volver a menu inicial"));
+        switch (opcionPila) {
+          case 1:
+            // Ingresar elementos de la Pila
+            int dato = Integer.parseInt(JOptionPane.showInputDialog(
+                "Ingrese un numero "));
+            colaSimple.Insertar(dato);
+            break;
+          case 2:
+            // Eliminar elementos de la pila
+            colaSimple.Eliminar();
+            break;
+          case 3:
+            // Mostrar la pila con el valor de tope
+            colaSimple.Recorrido();
+            break;
+          case 4:
+            // Operaciones con Cola Circular
+            System.out.println("Volviendo al menu principal");
+            break;
+          default:
+            // En caso de que ingresen un numero que no de
+            System.out.println("Ingrese una de las opciones dadas");
+            break;
+        }
+        if (opcionPila == 4) {
+          // salida
+          break;
+        }
+      } catch (Exception e) {
+        // control de errores
+        System.out.println("Ingrese una de las opciones dadas");
+        System.err.println(e);
+      }
+    }
   }
 
   static void menuColaCircular() {
