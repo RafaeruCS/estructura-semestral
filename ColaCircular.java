@@ -28,9 +28,19 @@ public class ColaCircular {
       } else if (finalcs == max - 1 && iniciocs == 0) {
         System.out.println("La cola esta llena");
       } else if (finalcs == max - 1 && colaCircular[0].equals(" ")) {
-        colaCircularGuia[finalcs] = " ";
-        finalcs = 0;
-        colaCircularGuia[finalcs] = "final";
+        if (colaCircularGuia[finalcs].equals("frente/final")) {
+          colaCircularGuia[finalcs] = "frente";
+          finalcs = 0;
+          colaCircular[finalcs] = dato;
+          colaCircularGuia[finalcs] = "final";
+        } else {
+          colaCircularGuia[finalcs] = " ";
+          finalcs = 0;
+          colaCircular[finalcs] = dato;
+          colaCircularGuia[finalcs] = "final";
+        }
+      } else if (finalcs == iniciocs - 1 && iniciocs > 0) {
+        System.out.println("Frente esta delante");
       } else {
         finalcs += 1;
         colaCircular[finalcs] = dato;
@@ -51,11 +61,13 @@ public class ColaCircular {
       } else if (iniciocs == -1) {
         System.out.println("La cola no tiene nada");
       } else if (iniciocs == max - 1 && colaCircular[0].equals(" ")) {
+        colaCircular[iniciocs] = " ";
         colaCircularGuia[iniciocs] = " ";
         iniciocs = 0;
         colaCircularGuia[iniciocs] = "frente";
       } else {
         colaCircularGuia[iniciocs] = " ";
+        colaCircular[iniciocs] = " ";
         iniciocs += 1;
         if (colaCircularGuia[iniciocs].equals("final")) {
           colaCircularGuia[iniciocs] = "frente/final";
