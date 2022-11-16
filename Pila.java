@@ -17,14 +17,15 @@ public class Pila {
   void Push(String dato) {
     tope += 1;
     try {
-      if (tope == max - 1) {
-        System.out.println("Ya esta llena la pila");
-        tope = max - 1;
-      } else if (tope > max) {
+      if (tope > max-1) {
         System.out.println("Desbordamiento");
-        tope = max -1;
+        tope = max - 1;
       } else {
         pila[tope] = dato;
+        if (tope == max-1) {
+          System.out.println("Ya esta llena la pila");
+          tope = max;
+        }
       }
     } catch (Exception e) {
 
