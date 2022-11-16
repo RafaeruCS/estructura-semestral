@@ -49,6 +49,7 @@ public class ColaSimple {
         System.out.println("La cola no tiene nada");
       } else {
         colaSimpleGuia[iniciocs] = " ";
+        colaSimple[iniciocs] = " ";
         iniciocs += 1;
         if (colaSimpleGuia[iniciocs].equals("final")) {
           colaSimpleGuia[iniciocs] = "frente/final";
